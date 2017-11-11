@@ -5,4 +5,4 @@
 > npm run dev
 ```
 
-
+Puis aller sur http:localhost:4000
