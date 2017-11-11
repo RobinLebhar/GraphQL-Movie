@@ -1,3 +1,8 @@
-# Lyrical-GraphQL
-Starter project from a GraphQL course on Udemy.com
-# Graphql-Starter
+# Graphql-Movie-Starter
+
+```
+> npm install
+> npm run dev
+```
+
+
