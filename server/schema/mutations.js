@@ -12,10 +12,10 @@ const mutation = new GraphQLObjectType({
     addMovie: {
       type: MovieType,
       args: {
-        name: { type: GraphQLString }
+        title: { type: GraphQLString }
       },
-      resolve(parentValue, { name }) {
-        return (new Movie({ name })).save()
+      resolve(parentValue, { title }) {
+        return (new Movie({ title })).save()
       }
     },
     addReviewToMovie: {
@@ -24,7 +24,8 @@ const mutation = new GraphQLObjectType({
         content: { type: GraphQLString },
         movieId: { type: GraphQLID }
       },
-      resolve(parentValue, { content, movieId }) {
+      resolve(parentValue, {movieId,content}) {
+
         return Movie.addReview(movieId, content);
       }
     },
