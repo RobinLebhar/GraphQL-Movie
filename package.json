@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/RobinLebhar/Graphql-Movie.git"
+    "url": "https://github.com/RobinLebhar/Graphql-Movie"
   },
   "scripts": {
     "dev": "nodemon index.js --ignore client"
