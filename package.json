@@ -1,11 +1,11 @@
 {
   "name": "moviedb",
   "version": "1.0.0",
-  "description": "Starter point for a graphQL course",
+  "description": "Pack de démarrage pour GraphQL",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/StephenGrider/Lyrical-GraphQL"
+    "url": "https://github.com/RobinLebhar/Graphql-Movie.git"
   },
   "scripts": {
     "dev": "nodemon index.js --ignore client"
