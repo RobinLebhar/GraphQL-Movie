@@ -15,14 +15,15 @@ const MovieSchema = new Schema({
 
 MovieSchema.statics.addReview = function(movieId, content) {
   const Review = mongoose.model('review');
-
+  const Movie = mongoose.model('movie');
+  
   return this.findById(movieId)
     .then(movie => {
       
-      const review = new Review( {content ,movie} );
-      movie.reviews.push(review)
-     
-      return Promise.all([review.save(), movie.save()])
+      const review = new Review( {content ,movie} );   
+      movie.reviews.push(review);  
+     const updateMovie =  Movie.findOneAndUpdate({_id:movie._id},{reviews:movie.reviews})
+      return Promise.all([review.save(),updateMovie])
         .then(([review, movie]) => movie);
     });
 }
