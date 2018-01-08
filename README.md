@@ -1,4 +1,4 @@
-# Graphql-Movie-Starter
+# Graphql-Movie
 
 ```
 > npm install
@@ -6,4 +6,3 @@
 ```
 
 Puis aller sur http:localhost:4000
-# GraphQL-Movie
