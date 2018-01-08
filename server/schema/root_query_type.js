@@ -9,12 +9,14 @@ const Movie = mongoose.model('movie');
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: () => ({
+    //récupérer tous les films
     movies: {
       type: new GraphQLList(MovieType),
       resolve() {
         return Movie.find({});
       }
     },
+    // retrouver un film par son id
     movie: {
       type: MovieType,
       args: { id: { type: new GraphQLNonNull(GraphQLID) } },
@@ -23,6 +25,7 @@ const RootQuery = new GraphQLObjectType({
       }
     },
     review: {
+      // retrouver une review par son id
       type: ReviewType,
       args: { id: { type: new GraphQLNonNull(GraphQLID) } },
       resolve(parentValue, { id }) {

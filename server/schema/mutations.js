@@ -9,6 +9,7 @@ const ReviewType = require('./review_type');
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
+    //ajout de film
     addMovie: {
       type: MovieType,
       args: {
@@ -19,6 +20,7 @@ const mutation = new GraphQLObjectType({
       }
     },
     addReviewToMovie: {
+      // ajouter une review au film ayant l'id movieId
       type: MovieType,
       args: {
         content: { type: GraphQLString },
@@ -30,6 +32,7 @@ const mutation = new GraphQLObjectType({
       }
     },
     likeReview: {
+      //liker une review par son id
       type: ReviewType,
       args: { id: { type: GraphQLID } },
       resolve(parentValue, { id }) {
@@ -37,6 +40,7 @@ const mutation = new GraphQLObjectType({
       }
     },
     deleteMovie: {
+      // supprimer un film par son id
       type: MovieType,
       args: { id: { type: GraphQLID } },
       resolve(parentValue, { id }) {

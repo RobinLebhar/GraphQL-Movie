@@ -8,7 +8,7 @@ const schema = require('./schema/schema');
 const app = express();
 
 // Remplacer avec ton url mlab
-const MONGO_URI = 'mongodb://robin:robin@ds249545.mlab.com:49545/moviedb';
+const MONGO_URI = 'mongodb://robinuser:robinuser@ds245347.mlab.com:45347/dbrobin001';
 if (!MONGO_URI) {
   throw new Error('Tu dois fournir une url mongoDB');
 }
