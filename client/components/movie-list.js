@@ -19,7 +19,7 @@ class MovieList extends Component {
             return <li key={movie.id}>{movie.title}</li>;
         })
       }else {
-          return "Chargement des donnéess...";
+          return "Chargement des données...";
       }
      
   }
