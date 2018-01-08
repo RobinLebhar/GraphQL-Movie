@@ -5,8 +5,8 @@ class MovieList extends Component {
   render() {
     return (
       <div>
-        Liste de film
-        <ul>
+        <h1>Liste de film</h1>
+        <ul className="collection">
             {this.renderMovies()}
         </ul>
       </div>
@@ -16,10 +16,10 @@ class MovieList extends Component {
   renderMovies(){
       if(!this.props.data.loading){
         return this.props.data.movies.map( (movie) => {
-            return <li key={movie.id}>{movie.title}</li>;
+            return <li className="collection-item" key={movie.id}>{movie.title}</li>;
         })
       }else {
-          return "Chargement des donnéess...";
+          return "Chargement des données...";
       }
      
   }
