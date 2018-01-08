@@ -9,7 +9,7 @@ class MovieCreate extends Component {
     return (
       <div>
         <h1>Ajouter un film</h1>
-        <form onSubmit={this.handleSubmit.bind(this)} className="input-field col s6">
+        <form className="input-field col s6">
         <input 
         type="text"
         className="validate"
@@ -19,10 +19,6 @@ class MovieCreate extends Component {
         </form>
       </div>
     )
-  }
-
-  handleSubmit(e){
-      console.log(this.state.terms);
   }
 }
 
