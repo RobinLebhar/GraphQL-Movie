@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { graphql } from "react-apollo";
-import gql from "graphql-tag";
+import readMoviesQuery from "../queries/readMovies";
+import { Link } from "react-router"
 class MovieList extends Component {
   render() {
     return (
@@ -9,6 +10,9 @@ class MovieList extends Component {
         <ul className="collection">
             {this.renderMovies()}
         </ul>
+        <Link to="/movies/create" className="btn-floating btn-large waves-effect waves-light blue right">
+            <i className="material-icons">add</i>
+        </Link>
       </div>
     )
   }
@@ -24,12 +28,5 @@ class MovieList extends Component {
      
   }
 }
-const query = gql`
-{
-    movies{
-        id,
-        title
-    }
-}
-`;
-export default graphql(query) (MovieList); 
+
+export default graphql(readMoviesQuery)(MovieList); 
