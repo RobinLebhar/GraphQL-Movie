@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-
+import { graphql } from "react-apollo";
+import createMovieMutation from "../queries/createMovie";
+import readMovieQuery from "../queries/readMovies";
+import { hashHistory } from "react-router";
 class MovieCreate extends Component {
     constructor(props){
         super(props);
@@ -14,12 +17,26 @@ class MovieCreate extends Component {
         type="text"
         className="validate"
         onChange={e => this.setState({terms : e.target.value})}
+        onKeyPress={this.handleSubmitForm.bind(this)}
         />
         <label className="active">Titre</label>
         </form>
       </div>
     )
   }
+
+  handleSubmitForm(e){
+    if(e.key ==="Enter"){
+      this.props.mutate({
+        variables: {
+          title:this.state.terms
+        },
+        refetchQueries: [{query : readMovieQuery}]
+      }).then( () => {
+        hashHistory.push("/movies");
+      })
+    }
+  }
 }
 
-export default MovieCreate;
+export default graphql(createMovieMutation)(MovieCreate);
