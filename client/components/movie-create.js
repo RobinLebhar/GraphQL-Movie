@@ -27,6 +27,7 @@ class MovieCreate extends Component {
 
   handleSubmitForm(e){
     if(e.key ==="Enter"){
+       e.preventDefault();
       this.props.mutate({
         variables: {
           title:this.state.terms
