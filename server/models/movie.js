@@ -19,7 +19,6 @@ MovieSchema.statics.addReview = function(movieId, content) {
   
   return this.findById(movieId)
     .then(movie => {
-      
       const review = new Review( {content ,movie} );   
       movie.reviews.push(review);  
      const updateMovie =  Movie.findOneAndUpdate({_id:movie._id},{reviews:movie.reviews})
