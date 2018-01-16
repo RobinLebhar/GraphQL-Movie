@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { graphql, compose} from "react-apollo";
-export default class ReviewCreate extends Component {
+import createReviewMutation from "../queries/createReview";
+class ReviewCreate extends Component {
 
     constructor(props){
         super(props);
@@ -17,6 +18,7 @@ export default class ReviewCreate extends Component {
             value = {this.state.terms}
             onKeyPress={this.submitForm.bind(this)}
         />
+        <label className="active">Ajouter une review</label>
         </form>
         </div>
       </div>
@@ -26,7 +28,22 @@ export default class ReviewCreate extends Component {
   submitForm(e){
       if(e.key ==="Enter"){
           e.preventDefault();
-          // requete graphql
+          this.props.createReviewMutation(
+              {
+                  variables: {
+                      content : this.state.terms,
+                      movieId : this.props.movieId
+                  }
+              }
+          ).then( () => {
+              this.setState({terms : ""})
+          })
       }
   }
 }
+
+export default compose(
+    graphql(createReviewMutation,{
+        name : "createReviewMutation"
+    })
+)(ReviewCreate)
