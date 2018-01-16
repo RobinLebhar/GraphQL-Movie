@@ -3,7 +3,13 @@ export default gql`
 query ReadMovie($id : ID!){
     movie(id: $id){
         id,
-        title
+        title,
+        reviews{
+            id,
+            content,
+            likes
+        }
+
     }
 }
 `;
