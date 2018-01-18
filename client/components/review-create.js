@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import { graphql, compose} from "react-apollo";
+import { graphql, compose } from "react-apollo";
 import createReviewMutation from "../queries/createReview";
+import readMovieQuery from "../queries/readMovie";
+import readMoviesQuery from "../queries/readMovies";
 class ReviewCreate extends Component {
 
     constructor(props){
         super(props);
         this.state ={ terms : ""};
     }
+
   render() {
     return (
       <div>
@@ -33,7 +36,16 @@ class ReviewCreate extends Component {
                   variables: {
                       content : this.state.terms,
                       movieId : this.props.movieId
-                  }
+                  },
+                  refetchQueries: [
+                      { 
+                          query : readMovieQuery,
+                          variables : {
+                              id : this.props.movieId
+                          }
+                      }
+                  ]
+                  
               }
           ).then( () => {
               this.setState({terms : ""})
