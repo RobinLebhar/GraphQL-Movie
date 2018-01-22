@@ -34,4 +34,15 @@ MovieSchema.statics.findReviews = function(id) {
     .then(movie => movie.reviews);
 }
 
+MovieSchema.pre("save", function (done) {
+  var self = this;
+  mongoose.models["movie"].findOne({title: self.title}, (err, user) => {
+      if(user) {
+          done(new Error("Le titre doit être unique"));
+      } else {
+          done();
+      }
+  });
+});
+
 mongoose.model('movie', MovieSchema);
