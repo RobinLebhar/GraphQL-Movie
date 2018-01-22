@@ -19,7 +19,7 @@ class ReviewList extends Component {
           <li key={review.id} className="collection-item">
             {review.content} 
             <div className="secondary-content delete_button">
-              <i className="material-icons" onClick= {() =>  this.likeReview(review.id)}>thumb_up</i>
+              <i className="material-icons" onClick= {() =>  this.likeReview(review.id, review.likes)}>thumb_up</i>
               {review.likes}
             </div>
           </li>
@@ -27,8 +27,18 @@ class ReviewList extends Component {
       })
   }
 
-  likeReview(id){
-    this.props.likeReviewMutation({variables: {id}})
+  likeReview(id, oldLikes){
+    this.props.likeReviewMutation({
+        variables: {id},
+        optimisticResponse: {
+          __typename: 'Mutation',
+          likeReview : {
+            id : id,
+            __typename : 'ReviewType',
+            likes : oldLikes + 1
+          }
+        }
+    })
   }
 }
 
