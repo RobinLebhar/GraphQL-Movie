@@ -8,6 +8,7 @@ import MovieCreate from "./components/movie-create";
 import MovieDetail from "./components/movie-detail";
 import { Router,  Route, hashHistory, IndexRedirect } from "react-router";
 const client = new ApolloClient ({
+  dataIdFromObject : o => o.id
 });
 
 const Root = () => {

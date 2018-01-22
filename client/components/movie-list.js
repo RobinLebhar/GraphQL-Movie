@@ -5,7 +5,6 @@ import deleteMovieMutation from "../queries/deleteMovie";
 import { Link } from "react-router"
 class MovieList extends Component {
   render() {
-    console.log(this.props);
     return (
       <div>
         <h1>Liste de film</h1>
@@ -39,7 +38,7 @@ class MovieList extends Component {
         id
       }
     }).then( () => {
-    this.props.readMoviesQuery.refetch();
+      this.props.readMoviesQuery.refetch();
     })
   }
 }

@@ -36,16 +36,7 @@ class ReviewCreate extends Component {
                   variables: {
                       content : this.state.terms,
                       movieId : this.props.movieId
-                  },
-                  refetchQueries: [
-                      { 
-                          query : readMovieQuery,
-                          variables : {
-                              id : this.props.movieId
-                          }
-                      }
-                  ]
-                  
+                  },          
               }
           ).then( () => {
               this.setState({terms : ""})
