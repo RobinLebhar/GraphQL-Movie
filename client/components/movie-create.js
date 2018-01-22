@@ -32,7 +32,7 @@ class MovieCreate extends Component {
         variables: {
           title:this.state.terms
         },
-        //refetchQueries: [{query : readMovieQuery}]
+        refetchQueries: [{query : readMovieQuery}]
       }).then( () => {
         hashHistory.push("/movies");
       })
