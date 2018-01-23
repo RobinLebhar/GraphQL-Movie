@@ -6,7 +6,7 @@ import { hashHistory } from "react-router";
 class MovieCreate extends Component {
     constructor(props){
         super(props);
-        this.state = { terms : ""};
+        this.state = { terms : "", errors: []};
     }
   render() {
     return (
@@ -21,6 +21,9 @@ class MovieCreate extends Component {
         />
         <label className="active">Titre</label>
         </form>
+        <div className="row errors">
+          {this.renderErrors()}
+        </div>
       </div>
     )
   }
@@ -32,12 +35,20 @@ class MovieCreate extends Component {
         variables: {
           title:this.state.terms
         },
-        //refetchQueries: [{query : readMovieQuery}]
+        refetchQueries: [{query : readMovieQuery}]
       }).then( () => {
         hashHistory.push("/movies");
+      }).catch( (errors) => {
+        const errorMessages = errors.graphQLErrors.map( err => err.message);
+        this.setState({errors:errorMessages});
       })
     }
   }
+
+  renderErrors (){
+    return this.state.errors.map( m => m);
+  }
+
 }
 
 export default graphql(createMovieMutation)(MovieCreate);

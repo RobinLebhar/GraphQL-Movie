@@ -16,7 +16,11 @@ const mutation = new GraphQLObjectType({
         title: { type: GraphQLString }
       },
       resolve(parentValue, { title }) {
-        return (new Movie({ title })).save()
+        return (new Movie({ title })).save().then( (response) => {
+          return response;
+        }).catch( (erreur) => {
+          return new Error("Ce film existe déja.");
+        });
       }
     },
     addReviewToMovie: {

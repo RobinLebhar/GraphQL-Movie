@@ -1,3 +1,7 @@
 .delete_button{
  cursor:pointer;
 }
+
+.errors{
+    color:red;
+}
