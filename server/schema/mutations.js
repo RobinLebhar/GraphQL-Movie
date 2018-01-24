@@ -31,7 +31,6 @@ const mutation = new GraphQLObjectType({
         movieId: { type: GraphQLID }
       },
       resolve(parentValue, {movieId,content}) {
-
         return Movie.addReview(movieId, content);
       }
     },
